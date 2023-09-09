@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.example.grpc";
+option java_outer_classname = "RolePermissionProto";
+
+service RolePermissionService {
+  rpc checkRoleIdExistence (RoleIDRequest) returns (RoleIDResponse);
+}
+
+message RoleIDRequest {
+  int64 role_id = 1;
+}
+
+message RoleIDResponse {
+  bool exists = 1;
+}
