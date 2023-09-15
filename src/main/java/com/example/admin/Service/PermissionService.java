@@ -1,20 +1,19 @@
 package com.example.admin.Service;
 
-import com.example.admin.modelEntity.Roles;
-import com.example.admin.modelEntity.User;
+import com.example.admin.modelEntity.Permissions;
 
-import java.security.Permission;
 import java.util.List;
 
 public interface PermissionService {
 
-    User savePermission(Permission permission);
+    Permissions savePermission(Permissions permissions);
 
     //read
-    List<Roles> fecthRolesList();
+    List<Permissions> fecthPermissionsList();
 
-    //Update
-    User updatePermission(Permission permission,Integer permission_id);
+    //UpdatePermissionson(Permissions permission,Integer permission_id);
+
+    Permissions updatePermission(Permissions permission, Integer permission_id);
 
     //Delete
     void deletePermissionByid(Integer permission_id);

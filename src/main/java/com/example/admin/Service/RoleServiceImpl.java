@@ -1,14 +1,11 @@
 package com.example.admin.Service;
 
 import com.example.admin.Repository.RoleRepository;
-import com.example.admin.Repository.UserRepository;
 import com.example.admin.modelEntity.Roles;
-import com.example.admin.modelEntity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class RoleServiceImpl   implements  RoleService{
@@ -21,21 +18,34 @@ public class RoleServiceImpl   implements  RoleService{
 
     @Override
     public Roles saveRoles(Roles roles) {
+
+
         return roleRepository.save(roles);
     }
 
+
+    //// readAll
     @Override
     public List<Roles> fecthRolesList() {
+
         return (List<Roles>) roleRepository.findAll();
     }
 
     @Override
-    public Roles updateRoles(Roles roles, Integer role_id) {
-        return null;
+    public Roles updateRoles(Roles role, Integer role_id) throws UserNotFoundException {
+       Roles existingRoles = roleRepository.findById(role_id)
+                .orElseThrow(() -> new UserNotFoundException("Role not found"));
+
+        // Update the user with the new data
+        existingRoles.setRoleName(role.getRoleName());
+
+
+        return roleRepository.save(existingRoles);
     }
 
     @Override
-    public void deleteRolesByid(Integer role_id) {
+    public void deleteRolesByid(Integer role_id) throws UserNotFoundException {
+
         roleRepository.deleteById(role_id);
     }
 }

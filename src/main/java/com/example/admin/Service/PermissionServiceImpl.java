@@ -1,24 +1,30 @@
 package com.example.admin.Service;
 
-import com.example.admin.modelEntity.Roles;
-import com.example.admin.modelEntity.User;
+import com.example.admin.Repository.PermissionRepository;
+import com.example.admin.modelEntity.Permissions;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.security.Permission;
 import java.util.List;
 
+@Service
 public class PermissionServiceImpl  implements  PermissionService{
+
+    @Autowired
+    private PermissionRepository permissionRepository;
+
     @Override
-    public User savePermission(Permission permission) {
-        return null;
+    public Permissions savePermission(Permissions permissions) {
+        return permissionRepository.save(permissions) ;
     }
 
     @Override
-    public List<Roles> fecthRolesList() {
-        return null;
+    public List<Permissions> fecthPermissionsList() {
+        return (List<Permissions>) permissionRepository.findAll() ;
     }
 
     @Override
-    public User updatePermission(Permission permission, Integer permission_id) {
+    public Permissions updatePermission(Permissions permission, Integer permission_id) {
         return null;
     }
 

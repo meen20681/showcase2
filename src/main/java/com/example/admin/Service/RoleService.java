@@ -1,7 +1,6 @@
 package com.example.admin.Service;
 
 import com.example.admin.modelEntity.Roles;
-import com.example.admin.modelEntity.User;
 
 import java.util.List;
 
@@ -14,8 +13,8 @@ public interface RoleService {
     List<Roles> fecthRolesList();
 
     //Update
-    Roles updateRoles(Roles roles,Integer role_id);
+    Roles updateRoles(Roles roles, Integer role_id) throws UserNotFoundException;
 
     //Delete
-    void deleteRolesByid(Integer role_id);
+    void deleteRolesByid(Integer role_id) throws UserNotFoundException;
 }
